@@ -1,0 +1,31 @@
+<!-- @dsCard group="Spacing" viewport="700x170" name="Radii & shadows" subtitle="Modest corners, soft navy-tinted elevation" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 28px; background: var(--surface-page); display:flex; gap:40px; flex-wrap:wrap; }
+  .group { display:flex; gap:16px; }
+  .col { display:flex; flex-direction:column; gap:8px; align-items:center; }
+  .box { width: 64px; height: 56px; background: var(--surface-card); border:1px solid var(--border-default); }
+  .tok { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+  .sbox { width: 72px; height: 56px; background: var(--surface-card); border-radius: var(--radius-md); }
+</style>
+</head>
+<body>
+<div class="group">
+  <div class="col"><div class="box" style="border-radius:var(--radius-sm)"></div><span class="tok">sm·6</span></div>
+  <div class="col"><div class="box" style="border-radius:var(--radius-md)"></div><span class="tok">md·10</span></div>
+  <div class="col"><div class="box" style="border-radius:var(--radius-lg)"></div><span class="tok">lg·14</span></div>
+  <div class="col"><div class="box" style="border-radius:var(--radius-xl)"></div><span class="tok">xl·20</span></div>
+  <div class="col"><div class="box" style="border-radius:var(--radius-pill)"></div><span class="tok">pill</span></div>
+</div>
+<div class="group">
+  <div class="col"><div class="sbox" style="box-shadow:var(--shadow-sm)"></div><span class="tok">sm</span></div>
+  <div class="col"><div class="sbox" style="box-shadow:var(--shadow-md)"></div><span class="tok">md</span></div>
+  <div class="col"><div class="sbox" style="box-shadow:var(--shadow-lg)"></div><span class="tok">lg</span></div>
+  <div class="col"><div class="sbox" style="box-shadow:var(--shadow-scan)"></div><span class="tok">scan</span></div>
+</div>
+</body>
+</html>

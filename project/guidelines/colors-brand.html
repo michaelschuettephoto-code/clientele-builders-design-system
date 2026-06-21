@@ -1,0 +1,24 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Brand core" subtitle="Ink, navy, action blue — the trustworthy foundation" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--surface-card); }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .sw { display: flex; flex-direction: column; gap: 10px; }
+  .chip { height: 86px; border-radius: var(--radius-md); border: 1px solid rgba(11,26,46,.08); }
+  .meta { display: flex; flex-direction: column; gap: 2px; }
+  .name { font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--text-primary); }
+  .tok { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="sw"><div class="chip" style="background:var(--ink)"></div><div class="meta"><span class="name">Ink</span><span class="tok">--ink · #0B1A2E</span></div></div>
+  <div class="sw"><div class="chip" style="background:var(--brand)"></div><div class="meta"><span class="name">Brand navy</span><span class="tok">--brand · #143A6B</span></div></div>
+  <div class="sw"><div class="chip" style="background:var(--brand-blue)"></div><div class="meta"><span class="name">Action blue</span><span class="tok">--brand-blue · #1E5FD0</span></div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+/* ============================================================
+   Clientele Builders — Color System
+   ------------------------------------------------------------
+   Mental model: a diagnostic instrument for life-insurance
+   distribution. Deep ink-navy ground (trust, depth), a
+   confident brand blue, a teal "scan" accent for visibility /
+   diagnosis, amber for LEAKS, green for HEALTHY systems.
+   Restrained and analytical — never loud, never salesy.
+   ============================================================ */
+
+:root {
+  /* ---- Brand core ---- */
+  --ink:            #161616; /* near-black — primary text & dark blocks */
+  --ink-2:          #232323; /* raised dark surface */
+  --brand:          #161616; /* primary = ink, not a color — minimal */
+  --brand-blue:     #161616;
+  --brand-blue-700: #000000;
+
+  /* ---- Diagnostic accent ("the scan") ---- */
+  --scan:           #161616; /* no separate accent color — minimal mono */
+  --scan-100:       #ECECEC;
+  --scan-50:        #F6F6F6;
+
+  /* ---- Signals (kept restrained, used sparingly as text/dot only) ---- */
+  --leak:           #C8462F;
+  --leak-100:       #F4E2DD;
+  --leak-50:        #FBEEEB;
+  --healthy:        #4B7A5A;
+  --healthy-100:    #DCE7DF;
+  --healthy-50:     #EFF4F0;
+  --alert:          #C8462F;
+  --alert-50:       #FBEEEB;
+
+  /* ---- Neutral ramp (warm gray, near editorial paper) ---- */
+  --neutral-0:      #FFFFFF;
+  --neutral-50:     #FAFAF8;
+  --neutral-100:    #F2F1EE;
+  --neutral-200:    #E4E2DD;
+  --neutral-300:    #CFCCC5;
+  --neutral-400:    #A8A49B;
+  --neutral-500:    #7E7A72;
+  --neutral-600:    #5C5952;
+  --neutral-700:    #403E39;
+  --neutral-800:    #262522;
+  --neutral-900:    #161616;
+
+  /* Photo-block placeholder tones — flat duotone fills standing in for imagery */
+  --photo-1:        #2B2E2C; /* near-black green-gray */
+  --photo-2:        #D8D4CB; /* warm stone */
+  --photo-3:        #BFC4BE; /* sage gray */
+  --photo-4:        #1E1F1D; /* charcoal */
+
+  /* ============================================================
+     Semantic aliases — reference these in components
+     ============================================================ */
+
+  /* Text */
+  --text-primary:   var(--ink);
+  --text-secondary: var(--neutral-600);
+  --text-muted:     var(--neutral-500);
+  --text-on-dark:   #F5F4F1;
+  --text-on-dark-muted: #B7B4AC;
+  --text-link:      var(--ink);
+  --text-accent:    var(--ink);
+
+  /* Surfaces */
+  --surface-page:   var(--neutral-0);
+  --surface-card:   var(--neutral-0);
+  --surface-sunken: var(--neutral-50);
+  --surface-ink:    var(--ink);
+  --surface-ink-2:  var(--ink-2);
+
+  /* Borders */
+  --border-subtle:  var(--neutral-100);
+  --border-default: var(--neutral-200);
+  --border-strong:  var(--neutral-300);
+  --border-on-dark: rgba(245, 244, 241, 0.14);
+
+  /* Interactive (primary = near-black: minimal, editorial) */
+  --action-bg:        var(--ink);
+  --action-bg-hover:  #000000;
+  --action-fg:        #FFFFFF;
+  --action-accent-bg: var(--ink);
+  --action-accent-bg-hover: #000000;
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px rgba(22, 22, 22, 0.18);
+}

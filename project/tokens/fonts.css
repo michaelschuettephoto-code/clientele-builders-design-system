@@ -1,0 +1,15 @@
+/* ============================================================
+   Clientele Builders — Webfonts
+   ------------------------------------------------------------
+   No custom brand fonts were supplied with the brief, so the
+   system is built on a curated Google Fonts trio. If/when a
+   licensed brand typeface arrives, swap the @font-face here and
+   the family vars in typography.css stay the same.
+
+   - Newsreader      → editorial serif for display/headlines
+                       ("smart people explaining clearly")
+   - Hanken Grotesk  → warm, readable grotesque for body & UI
+   - IBM Plex Mono   → instrument-readout labels, metrics, data
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');

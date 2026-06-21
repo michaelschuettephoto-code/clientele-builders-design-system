@@ -1,0 +1,8 @@
+Claim ID,🚩 Fact-Check Flag,Claim,Source File,Original Source,Risk,NotebookLM Status,Editor Approval (Shawn),Notes
+C1,🔴 NEEDS FACT-CHECK,US life insurance & annuities is a $1.1 trillion industry (2026),IBISWorld - Life Insurance & Annuities in the US (Feb 2026),IBISWorld,Medium,Pending Audit,Pending,Time-sensitive market size - verify live before publish
+C2,🔴 NEEDS FACT-CHECK,Industry grew ~0.9%/yr (2021-26); forecast ~2.0% to 2031,IBISWorld - Life Insurance & Annuities in the US (Feb 2026),IBISWorld,Medium,Pending Audit,Pending,Updates each IBISWorld release - verify live before publish
+C3,🟡 NEEDS AUDIT,Largest carriers hold low-single-digit share; ~90% is 'other companies',IBISWorld - Life Insurance & Annuities in the US (Feb 2026),IBISWorld,Low,Pending Audit,Pending,Stable/structural - NotebookLM confirm source
+C4,🟡 NEEDS AUDIT,~50% of US life insurance sold via independent agents/brokers,Statista 377638 - life insurance distribution channels US 2019-2023,Statista; LIMRA; Insurance Information Institute,Low,Pending Audit,Pending,5-yr series 49-53% - NotebookLM confirm source
+C5,⚪ OPINION - NO CHECK,'The market won't grow you' - growth comes from distribution not the market,CB Master Research synthesis,Clientele Builders interpretation,Opinion,N/A,Pending,Framed as argument not a stat
+,,,,,,,,
+LEGEND,🔴 NEEDS FACT-CHECK = volatile stat; verify live before publish.  🟡 NEEDS AUDIT = NotebookLM must confirm the source.  ⚪ OPINION = no fact-check needed.,,,,,,,

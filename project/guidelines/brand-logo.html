@@ -1,0 +1,42 @@
+<!-- @dsCard group="Brand" viewport="700x300" name="Logo & lockup" subtitle="Diagnostic scan mark + editorial wordmark, on light and ink" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 0; background: var(--surface-card); display:grid; grid-template-columns: 1fr 1fr; }
+  .panel { padding: 36px; display:flex; flex-direction:column; gap:26px; justify-content:center; }
+  .ink { background: var(--ink); }
+  .lockup { display:flex; align-items:center; gap:14px; }
+  .lockup img { width: 44px; height: 44px; }
+  .word { display:flex; flex-direction:column; gap:2px; }
+  .name { font-family: var(--font-display); font-weight:500; font-size: 25px; letter-spacing:-.02em; line-height:1; }
+  .name.l { color: var(--ink); }
+  .name.d { color: #fff; }
+  .tag { font-family: var(--font-mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; }
+  .tag.l { color: var(--scan); }
+  .tag.d { color: var(--scan); }
+  .mark-only img { width: 40px; height:40px; }
+  .cap { font-family: var(--font-mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; color: var(--text-muted); }
+  .cap.d { color: var(--text-on-dark-muted); }
+</style>
+</head>
+<body>
+<div class="panel">
+  <span class="cap">Primary lockup</span>
+  <div class="lockup">
+    <img src="../assets/logo-mark.svg" alt="Clientele Builders" />
+    <div class="word"><span class="name l">Clientele Builders</span><span class="tag l">Distribution Intelligence</span></div>
+  </div>
+  <div class="mark-only"><img src="../assets/logo-mark.svg" alt="mark" /></div>
+</div>
+<div class="panel ink">
+  <span class="cap d">On ink</span>
+  <div class="lockup">
+    <img src="../assets/logo-mark.svg" alt="Clientele Builders" />
+    <div class="word"><span class="name d">Clientele Builders</span><span class="tag d">Distribution Intelligence</span></div>
+  </div>
+</div>
+</body>
+</html>

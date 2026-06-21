@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Signals — scan, leak, healthy" subtitle="The diagnostic language: teal sees, amber leaks, green is healthy" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="../styles.css" />
+<style>
+  body { margin: 0; padding: 24px; background: var(--surface-card); }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .sw { display: flex; flex-direction: column; gap: 10px; }
+  .chip { height: 86px; border-radius: var(--radius-md); display:flex; align-items:flex-end; padding:10px; }
+  .tint { width: 26px; height: 26px; border-radius: 6px; border: 1px solid rgba(11,26,46,.06); }
+  .meta { display: flex; flex-direction: column; gap: 2px; }
+  .name { font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--text-primary); }
+  .tok { font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="sw"><div class="chip" style="background:var(--scan)"><div class="tint" style="background:var(--scan-100)"></div></div><div class="meta"><span class="name">Scan / diagnostic</span><span class="tok">--scan · #1BA7C2</span></div></div>
+  <div class="sw"><div class="chip" style="background:var(--leak)"><div class="tint" style="background:var(--leak-100)"></div></div><div class="meta"><span class="name">Leak</span><span class="tok">--leak · #E0922F</span></div></div>
+  <div class="sw"><div class="chip" style="background:var(--healthy)"><div class="tint" style="background:var(--healthy-100)"></div></div><div class="meta"><span class="name">Healthy</span><span class="tok">--healthy · #2E9E6B</span></div></div>
+  <div class="sw"><div class="chip" style="background:var(--alert)"><div class="tint" style="background:var(--alert-50)"></div></div><div class="meta"><span class="name">Critical (rare)</span><span class="tok">--alert · #C8462F</span></div></div>
+</div>
+</body>
+</html>

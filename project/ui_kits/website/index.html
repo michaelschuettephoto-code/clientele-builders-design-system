@@ -1,0 +1,87 @@
+<!-- @dsCard group="Website" viewport="1280x780" name="Homepage" subtitle="The door — hero, leak chain, 8-part diagnostic, assessment" -->
+<!-- @startingPoint section="Website" subtitle="Clientele Builders marketing homepage with live assessment" viewport="1280x780" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clientele Builders — Find the leaks in your distribution system</title>
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; background: var(--surface-page); }
+
+  .cb-container { max-width: var(--container-max); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
+  .cb-section { padding-top: var(--section-y); padding-bottom: var(--section-y); }
+
+  .cb-h2 { font-family: var(--font-display); font-weight: 500; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.08; letter-spacing: -.025em; color: var(--text-primary); margin: 0 0 18px; }
+  .cb-lead-text { font-family: var(--font-sans); font-size: 18px; line-height: 1.6; color: var(--text-secondary); margin: 0; }
+
+  .cb-ic svg { width: 100%; height: 100%; display: block; }
+
+  /* Pipeline */
+  .cb-pipeline { display: flex; align-items: flex-start; gap: 0; flex-wrap: wrap; }
+  .cb-pipe-node { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; width: 104px; flex-shrink: 0; }
+  .cb-pipe-icon { width: 58px; height: 58px; border-radius: 999px; border: 1.5px solid var(--border-strong); background: var(--surface-card); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm); }
+  .cb-pipe-name { font-family: var(--font-sans); font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
+  .cb-pipe-leak { display: inline-flex; align-items: center; gap: 3px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .02em; color: var(--leak); max-width: 96px; line-height: 1.3; }
+  .cb-pipe-link { flex: 1 1 22px; min-width: 22px; height: 1.5px; background: repeating-linear-gradient(90deg, var(--border-strong) 0 6px, transparent 6px 12px); margin-top: 28px; }
+
+  /* Grids */
+  .cb-diag-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .cb-lever-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  @media (max-width: 1000px) {
+    .cb-hero-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+    .cb-diag-grid { grid-template-columns: repeat(2, 1fr); }
+    .cb-lever-grid { grid-template-columns: 1fr; }
+    .cb-nav-links { display: none !important; }
+    .cb-footer-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 600px) {
+    .cb-diag-grid { grid-template-columns: 1fr; }
+    .cb-footer-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/lucide@0.456.0/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+
+<script type="text/babel" src="Icon.jsx?v=2"></script>
+<script type="text/babel" src="Chrome.jsx?v=2"></script>
+<script type="text/babel" src="Hero.jsx?v=2"></script>
+<script type="text/babel" src="Sections.jsx?v=2"></script>
+<script type="text/babel" src="WhyResearch.jsx?v=2"></script>
+<script type="text/babel" src="Assessment.jsx?v=2"></script>
+<script type="text/babel">
+  const { useState } = React;
+  function App() {
+    const [open, setOpen] = useState(false);
+    const assess = () => setOpen(true);
+    return (
+      <React.Fragment>
+        <Nav onAssess={assess} />
+        <main>
+          <Hero onAssess={assess} />
+          <LeakPipeline />
+          <LeakCategories />
+          <Diagnostics />
+          <LatestInsights />
+          <WhyMatters />
+          <Research />
+          <AssessmentCTA onAssess={assess} />
+        </main>
+        <Footer />
+        {open && <Assessment onClose={() => setOpen(false)} />}
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
