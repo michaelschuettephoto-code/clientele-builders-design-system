@@ -173,7 +173,7 @@ function IGOnlineShift({ ledgerUrl }) {
         </div>
       </div>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 16, lineHeight: 1.6, color: 'var(--text-primary)', textAlign: 'center', margin: '18px 0 4px', maxWidth: 420, marginLeft: 'auto', marginRight: 'auto' }}>
-        Almost <strong>half</strong> of life insurance buyers now shop online before they ever talk to an agent — and that share keeps climbing.
+        Among recent life insurance buyers, online shopping rose to <strong>44%</strong> in LIMRA's latest comparison with 2017 results.
       </p>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: 'var(--text-muted)', textAlign: 'center', margin: '4px 0 0' }}>And in 2023, buyers said for the first time that they'd rather purchase online than in person.</p>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 12, fontStyle: 'italic', color: 'var(--text-muted)', borderTop: '1px solid var(--border-default)', margin: '16px 0 0', paddingTop: 12 }}>
