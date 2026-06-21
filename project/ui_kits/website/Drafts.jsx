@@ -32,10 +32,13 @@ function ClaimTag({ id }) {
   );
 }
 
-function DStatBlock({ stat, source, ledgerUrl, sourceUrl, published }) {
+function DStatBlock({ stat, source, ledgerUrl, sourceUrl, published, context }) {
   const srcStyle = { fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase' };
   return (
     <div style={{ borderLeft: '3px solid var(--ink)', paddingLeft: 20, margin: '24px 0', display: 'flex', flexDirection: 'column', gap: 4 }}>
+      {context && (
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--leak)', marginBottom: 2 }}>{context}</span>
+      )}
       <span style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 22, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{stat}</span>
       <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
         {published
@@ -67,7 +70,7 @@ function DArticleBody({ body, ledgerUrl, published }) {
         if (block.type === 'stat') return (
           <div key={i}>
             {!published && REVIEW_MODE && block.claim && <div style={{ marginBottom: 6 }}><ClaimTag id={block.claim} /></div>}
-            <DStatBlock stat={block.stat} source={block.source} sourceUrl={block.sourceUrl} ledgerUrl={ledgerUrl} published={published} />
+            <DStatBlock stat={block.stat} source={block.source} sourceUrl={block.sourceUrl} ledgerUrl={ledgerUrl} published={published} context={block.context} />
           </div>
         );
         if (block.type === 'figure') {
@@ -118,13 +121,13 @@ const DRAFTS = [
       { type: 'p', claim: 'R4', text: "When the average insurance agency runs three people deep, the idea that you're at a disadvantage against some recruiting juggernaut doesn't hold up. There isn't one. The fight for talent in this industry is fragmented, local, and winnable — if you treat recruiting like a system instead of an occasional scramble." },
       { type: 'h3', text: "Growth is slowing down, but the price of people isn't" },
       { type: 'p', text: "Now follow the money, because this is where the leak actually shows up." },
-      { type: 'stat', claim: 'R1', stat: "“Revenue for insurance brokers and agencies has surged at a CAGR of 3.8% over the past five years, reaching $261.7 billion in 2025.”", source: 'IBISWorld — Insurance Brokers & Agencies in the US, Oct 2025 (licensed report — verify via local PDF, p.8)' },
-      { type: 'stat', claim: 'R2', stat: "“Revenue... is forecast to inch upward at a CAGR of 0.9% in the next five years, reaching $274.0 billion in 2030.”", source: 'IBISWorld — Insurance Brokers & Agencies in the US, Oct 2025 (licensed report — verify via local PDF, p.8)' },
+      { type: 'stat', claim: 'R1', context: 'U.S. insurance brokers & agencies industry', stat: "“Revenue for insurance brokers and agencies has surged at a CAGR of 3.8% over the past five years, reaching $261.7 billion in 2025.”", source: 'IBISWorld — Insurance Brokers & Agencies in the US, Oct 2025 (licensed report — verify via local PDF, p.8)' },
+      { type: 'stat', claim: 'R2', context: 'U.S. insurance brokers & agencies industry', stat: "“Revenue... is forecast to inch upward at a CAGR of 0.9% in the next five years, reaching $274.0 billion in 2030.”", source: 'IBISWorld — Insurance Brokers & Agencies in the US, Oct 2025 (licensed report — verify via local PDF, p.8)' },
       { type: 'figure', figure: 'recruitingGrowth', claim: 'R1 · R2' },
       { type: 'p', text: "Growth is forecast to slow to less than a third of its prior pace. And that means the comfortable years — when a rising tide covered for a weak recruiting bench — are ending. What's left is competition for the same finite group of people, and that competition is already showing up in the numbers." },
       { type: 'h3', text: "Compensation is becoming the real battleground" },
       { type: 'p', text: "Here's where it gets interesting." },
-      { type: 'stat', claim: 'R3', stat: "“Employment and wages have swelled substantially in the last five years, with compensation rising more as providers have sought to attract top talent.”", source: 'IBISWorld — Insurance Brokers & Agencies in the US, Oct 2025 (licensed report — verify via local PDF, p.12)' },
+      { type: 'stat', claim: 'R3', context: 'U.S. insurance brokers & agencies industry', stat: "“Employment and wages have swelled substantially in the last five years, with compensation rising more as providers have sought to attract top talent.”", source: 'IBISWorld — Insurance Brokers & Agencies in the US, Oct 2025 (licensed report — verify via local PDF, p.12)' },
       { type: 'p', claim: 'R3', text: "Wages aren't climbing because the work changed overnight. They're climbing because agencies are bidding against each other for the same small pool of people, in a market where the average shop has three employees and nowhere to hide a bad hire. If you're not actively recruiting, you're not standing still — you're losing ground to whoever is." },
       { type: 'h3', text: "How to stop the recruiting leak" },
       { type: 'p', text: "You can't out-budget your way through a market this fragmented. There's no scale advantage to buy. What there is, is a smaller pool than people assume, and most agencies treating recruiting as an event instead of a pipeline." },
@@ -144,7 +147,7 @@ const DRAFTS = [
       { type: 'p', text: "Most owners start counting at recruiting, or production, or revenue. But if you can't earn attention, the rest of the funnel never gets the chance to work. An empty top means an empty everything." },
       { type: 'h3', text: "The fight for attention moved online — and it isn't cheap" },
       { type: 'p', text: "Attention used to be local. Now it's a national auction, and the bidding is fierce." },
-      { type: 'stat', claim: 'A1', stat: "“The industry drove record revenue, reaching $294.6 billion in 2025, reflecting a 13.9% year-over-year increase.”", source: 'IAB Internet Advertising Revenue Report', sourceUrl: 'https://www.iab.com/news/digital-ad-revenue-climbs-to-nearly-300b-as-iab-celebrates-30-year-anniversary/#:~:text=reaching%20%24294.6%20billion%20in%202025%2C%20reflecting%20a%2013.9%25%20year-over-year%20increase' },
+      { type: 'stat', claim: 'A1', context: 'U.S. digital advertising industry', stat: "“The industry drove record revenue, reaching $294.6 billion in 2025, reflecting a 13.9% year-over-year increase.”", source: 'IAB Internet Advertising Revenue Report', sourceUrl: 'https://www.iab.com/news/digital-ad-revenue-climbs-to-nearly-300b-as-iab-celebrates-30-year-anniversary/#:~:text=reaching%20%24294.6%20billion%20in%202025%2C%20reflecting%20a%2013.9%25%20year-over-year%20increase' },
       { type: 'p', text: "That's the room you're walking into. Digital ad revenue grew nearly 14% in a single year. The point isn't to outspend it — you can't. The point is that attention is now earned online, and if you're not there with something worth noticing, you're invisible before the funnel even begins." },
       { type: 'h3', text: 'Your buyers are already online before they ever talk to you' },
       { type: 'p', text: "Here's what changed underneath all that spend: the buyer moved first." },
