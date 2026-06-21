@@ -155,21 +155,21 @@ function IGDistribution({ ledgerUrl }) {
 function IGOnlineShift({ ledgerUrl }) {
   return (
     <FigureFrame kicker="Where buyers go first" title="More people are shopping for life insurance online than ever before" source="LIMRA" ledgerUrl={ledgerUrl}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18, flexWrap: 'wrap', padding: '8px 0 4px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(8px, 3vw, 18px)', flexWrap: 'nowrap', padding: '8px 0 4px' }}>
         {/* Before */}
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 48, color: 'var(--text-muted)', lineHeight: 1 }}>30%</div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6 }}>Back in 2017</div>
+        <div style={{ textAlign: 'center', minWidth: 0 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'clamp(28px, 10vw, 48px)', color: 'var(--text-muted)', lineHeight: 1 }}>30%</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 11px)', letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6, whiteSpace: 'nowrap' }}>Back in 2017</div>
         </div>
         {/* Arrow */}
-        <svg width="56" height="24" viewBox="0 0 56 24" style={{ flexShrink: 0 }} aria-hidden="true">
+        <svg viewBox="0 0 56 24" style={{ flexShrink: 0, width: 'clamp(26px, 7vw, 56px)', height: 'auto' }} aria-hidden="true">
           <line x1="2" y1="12" x2="46" y2="12" stroke="var(--leak)" strokeWidth="3" strokeLinecap="round" />
           <path d="M38 4 L50 12 L38 20" fill="none" stroke="var(--leak)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         {/* After */}
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 56, color: 'var(--leak)', lineHeight: 1 }}>44%</div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-primary)', fontWeight: 700, marginTop: 6 }}>Today</div>
+        <div style={{ textAlign: 'center', minWidth: 0 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(32px, 11.5vw, 56px)', color: 'var(--leak)', lineHeight: 1 }}>44%</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 11px)', letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-primary)', fontWeight: 700, marginTop: 6, whiteSpace: 'nowrap' }}>Today</div>
         </div>
       </div>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 16, lineHeight: 1.6, color: 'var(--text-primary)', textAlign: 'center', margin: '18px 0 4px', maxWidth: 420, marginLeft: 'auto', marginRight: 'auto' }}>
@@ -212,18 +212,18 @@ function IGRecruitingShops({ ledgerUrl }) {
 function IGRecruitingGrowth({ ledgerUrl }) {
   return (
     <FigureFrame kicker="The squeeze" title="Growth is slowing down — but the cost of people isn't" source="IBISWorld, Insurance Brokers & Agencies in the US, Oct 2025" ledgerUrl={ledgerUrl}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18, flexWrap: 'wrap', padding: '8px 0 4px' }}>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 48, color: 'var(--text-muted)', lineHeight: 1 }}>3.8%</div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6 }}>Past 5 years</div>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(8px, 3vw, 18px)', flexWrap: 'nowrap', padding: '8px 0 4px' }}>
+        <div style={{ textAlign: 'center', minWidth: 0 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'clamp(28px, 10vw, 48px)', color: 'var(--text-muted)', lineHeight: 1 }}>3.8%</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 11px)', letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6, whiteSpace: 'nowrap' }}>Past 5 years</div>
         </div>
-        <svg width="56" height="24" viewBox="0 0 56 24" style={{ flexShrink: 0 }} aria-hidden="true">
+        <svg viewBox="0 0 56 24" style={{ flexShrink: 0, width: 'clamp(26px, 7vw, 56px)', height: 'auto' }} aria-hidden="true">
           <line x1="2" y1="12" x2="46" y2="12" stroke="var(--leak)" strokeWidth="3" strokeLinecap="round" />
           <path d="M38 4 L50 12 L38 20" fill="none" stroke="var(--leak)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
-        <div style={{ textAlign: 'center' }}>
-          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 56, color: 'var(--leak)', lineHeight: 1 }}>0.9%</div>
-          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-primary)', fontWeight: 700, marginTop: 6 }}>Next 5 years (forecast)</div>
+        <div style={{ textAlign: 'center', minWidth: 0 }}>
+          <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(32px, 11.5vw, 56px)', color: 'var(--leak)', lineHeight: 1 }}>0.9%</div>
+          <div style={{ fontFamily: 'var(--font-mono)', fontSize: 'clamp(9px, 2.4vw, 11px)', letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-primary)', fontWeight: 700, marginTop: 6, whiteSpace: 'nowrap' }}>Next 5 years (forecast)</div>
         </div>
       </div>
       <p style={{ fontFamily: 'var(--font-sans)', fontSize: 16, lineHeight: 1.6, color: 'var(--text-primary)', textAlign: 'center', margin: '18px 0 4px', maxWidth: 440, marginLeft: 'auto', marginRight: 'auto' }}>
