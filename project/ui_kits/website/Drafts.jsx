@@ -32,19 +32,21 @@ function ClaimTag({ id }) {
   );
 }
 
-function DStatBlock({ stat, source, ledgerUrl, sourceUrl }) {
+function DStatBlock({ stat, source, ledgerUrl, sourceUrl, published }) {
   const srcStyle = { fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase' };
   return (
     <div style={{ borderLeft: '3px solid var(--ink)', paddingLeft: 20, margin: '24px 0', display: 'flex', flexDirection: 'column', gap: 4 }}>
       <span style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 22, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{stat}</span>
       <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-        {sourceUrl
-          ? <a href={sourceUrl} target="_blank" rel="noopener" title="Jump to the exact sentence on the source page"
-               style={{ ...srcStyle, color: 'var(--text-muted)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              {source}<span aria-hidden="true" style={{ fontWeight: 700, color: 'var(--leak)' }}>↗ source</span>
-            </a>
-          : source && <span style={{ ...srcStyle, color: 'var(--text-muted)' }}>{source}</span>}
-        {ledgerUrl && (
+        {published
+          ? (source && <span style={{ ...srcStyle, color: 'var(--text-muted)' }}>{source}</span>)
+          : (sourceUrl
+              ? <a href={sourceUrl} target="_blank" rel="noopener" title="Jump to the exact sentence on the source page"
+                   style={{ ...srcStyle, color: 'var(--text-muted)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  {source}<span aria-hidden="true" style={{ fontWeight: 700, color: 'var(--leak)' }}>↗ source</span>
+                </a>
+              : source && <span style={{ ...srcStyle, color: 'var(--text-muted)' }}>{source}</span>)}
+        {!published && ledgerUrl && (
           <a href={ledgerUrl} target="_blank" rel="noopener" title="Open this claim in the Fact Ledger (Zoho Sheet)"
              style={{ ...srcStyle, color: 'var(--leak)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
             <span aria-hidden="true" style={{ fontWeight: 700 }}>↗ ledger</span>
@@ -55,7 +57,7 @@ function DStatBlock({ stat, source, ledgerUrl, sourceUrl }) {
   );
 }
 
-function DArticleBody({ body, ledgerUrl }) {
+function DArticleBody({ body, ledgerUrl, published }) {
   return (
     <div style={{ maxWidth: 680 }}>
       {body.map((block, i) => {
@@ -64,8 +66,8 @@ function DArticleBody({ body, ledgerUrl }) {
         );
         if (block.type === 'stat') return (
           <div key={i}>
-            {REVIEW_MODE && block.claim && <div style={{ marginBottom: 6 }}><ClaimTag id={block.claim} /></div>}
-            <DStatBlock stat={block.stat} source={block.source} sourceUrl={block.sourceUrl} ledgerUrl={ledgerUrl} />
+            {!published && REVIEW_MODE && block.claim && <div style={{ marginBottom: 6 }}><ClaimTag id={block.claim} /></div>}
+            <DStatBlock stat={block.stat} source={block.source} sourceUrl={block.sourceUrl} ledgerUrl={ledgerUrl} published={published} />
           </div>
         );
         if (block.type === 'figure') {
@@ -73,12 +75,12 @@ function DArticleBody({ body, ledgerUrl }) {
           if (!F) return null;
           return (
             <div key={i}>
-              {REVIEW_MODE && block.claim && <div style={{ marginBottom: 6 }}><ClaimTag id={block.claim} /></div>}
-              <F ledgerUrl={ledgerUrl} />
+              {!published && REVIEW_MODE && block.claim && <div style={{ marginBottom: 6 }}><ClaimTag id={block.claim} /></div>}
+              <F ledgerUrl={published ? undefined : ledgerUrl} />
             </div>
           );
         }
-        return <p key={i} style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text-secondary)', margin: '0 0 14px' }}>{block.text}<ClaimTag id={block.claim} /></p>;
+        return <p key={i} style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text-secondary)', margin: '0 0 14px' }}>{block.text}{!published && <ClaimTag id={block.claim} />}</p>;
       })}
     </div>
   );
@@ -213,22 +215,33 @@ function DraftsList() {
   );
 }
 
-/* ---- Single-article page: renders just one draft, with a banner + back link ---- */
-function DraftArticleHeader() {
+/* ---- Single-article page: renders just one draft, with a banner + back link ----
+   Add ?view=published to the URL to preview it with all internal draft chrome
+   (banner, status pill, ledger line, claim tags, source/ledger links) hidden —
+   this is a PREVIEW of how it will look once actually published, not a real
+   publish. Real publish still means moving it into Blog.jsx per the note above. */
+function DraftArticleHeader({ published }) {
   return (
     <section className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)', paddingBottom: 24 }}>
       <div className="cb-container">
-        <div style={{ background: '#FDECEC', border: '1px solid #F3B4B0', borderRadius: 8, padding: '14px 18px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
-          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: '#B42318' }}>● Draft workspace — not published</span>
-          <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: '#7A1B12' }}>Internal only. Publishes after NotebookLM audit + editor approval.</span>
-        </div>
+        {published ? (
+          <div style={{ background: '#FEF3D9', border: '1px solid #E0A23C', borderRadius: 8, padding: '14px 18px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: '#B25E09' }}>◐ Published preview</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: '#7A4B12' }}>This shows how the article will look once live. It has not actually been published — editor approval is still pending.</span>
+          </div>
+        ) : (
+          <div style={{ background: '#FDECEC', border: '1px solid #F3B4B0', borderRadius: 8, padding: '14px 18px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: '#B42318' }}>● Draft workspace — not published</span>
+            <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: '#7A1B12' }}>Internal only. Publishes after NotebookLM audit + editor approval.</span>
+          </div>
+        )}
         <a href="drafts.html" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', textDecoration: 'none' }}>← All drafts</a>
       </div>
     </section>
   );
 }
 
-function DraftArticlePage({ slug }) {
+function DraftArticlePage({ slug, published }) {
   const p = DRAFTS.find(d => d.slug === slug);
   if (!p) {
     return (
@@ -244,18 +257,18 @@ function DraftArticlePage({ slug }) {
       <div className="cb-container">
         <article id={p.slug} style={{ padding: '12px 0 44px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16, flexWrap: 'wrap' }}>
-            <StatusPill status={p.status} />
+            {!published && <StatusPill status={p.status} />}
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{p.tag}</span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{p.date}</span>
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{dReadTime(p.body)}</span>
           </div>
           <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(2rem, 4vw, 2.8rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 16px', maxWidth: 760 }}>{p.t}</h1>
-          {p.ledger && (
+          {!published && p.ledger && (
             <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)', margin: '0 0 28px' }}>
               Fact Ledger: {p.ledgerUrl ? <a href={p.ledgerUrl} target="_blank" rel="noopener" style={{ color: 'var(--leak)', textDecoration: 'underline' }}>{p.ledger}</a> : p.ledger}
             </p>
           )}
-          <DArticleBody body={p.body} ledgerUrl={p.ledgerUrl} />
+          <DArticleBody body={p.body} ledgerUrl={p.ledgerUrl} published={published} />
         </article>
       </div>
     </section>

@@ -35,19 +35,20 @@
 <script type="text/babel" src="Icon.jsx?v=1"></script>
 <script type="text/babel" src="Chrome.jsx?v=1"></script>
 <script type="text/babel" src="Infographics.jsx?v=6"></script>
-<script type="text/babel" src="Drafts.jsx?v=15"></script>
+<script type="text/babel" src="Drafts.jsx?v=16"></script>
 <script type="text/babel" src="Assessment.jsx?v=1"></script>
 <script type="text/babel">
   const { useState } = React;
   function App() {
     const [open, setOpen] = useState(false);
     const assess = () => setOpen(true);
+    const published = new URLSearchParams(window.location.search).get('view') === 'published';
     return (
       <React.Fragment>
         <Nav onAssess={assess} />
         <main>
-          <DraftArticleHeader />
-          <DraftArticlePage slug="draft-attention" />
+          <DraftArticleHeader published={published} />
+          <DraftArticlePage slug="draft-attention" published={published} />
         </main>
         <Footer />
         {open && <Assessment onClose={() => setOpen(false)} />}
