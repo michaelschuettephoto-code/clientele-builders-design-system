@@ -1,11 +1,11 @@
-<!-- @dsCard group="Website" viewport="1280x780" name="Drafts" subtitle="Internal draft workspace — unpublished articles in the fact-check pipeline" -->
+<!-- @dsCard group="Website" viewport="1280x780" name="Draft - Recruiting" subtitle="Internal draft — single article page, Recruiting leak" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Draft Workspace (Internal) — Clientele Builders</title>
+<title>Draft: The Second Leak Is Recruiting (Internal) — Clientele Builders</title>
 <link rel="stylesheet" href="../../styles.css" />
 <style>
   body { margin: 0; background: var(--surface-page); }
@@ -46,8 +46,8 @@
       <React.Fragment>
         <Nav onAssess={assess} />
         <main>
-          <DraftsHeader />
-          <DraftsList />
+          <DraftArticleHeader />
+          <DraftArticlePage slug="draft-recruiting" />
         </main>
         <Footer />
         {open && <Assessment onClose={() => setOpen(false)} />}

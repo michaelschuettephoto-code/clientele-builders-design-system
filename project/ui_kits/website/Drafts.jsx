@@ -12,6 +12,12 @@ function dReadTime(body) {
   const words = body.filter(b => b.type === 'p').map(b => b.text).join(' ').split(/\s+/).length;
   return Math.max(2, Math.round(words / 200)) + ' min read';
 }
+function dExcerpt(body, max) {
+  const firstP = body.find(b => b.type === 'p');
+  if (!firstP) return '';
+  const text = firstP.text;
+  return text.length > max ? text.slice(0, max).replace(/\s+\S*$/, '') + '…' : text;
+}
 
 /* TEMPORARY — claim-ID tags that match the Fact Ledger, for review only.
    Set REVIEW_MODE = false (or delete the ClaimTag usages) before publishing. */
@@ -175,25 +181,31 @@ function DraftsHeader() {
   );
 }
 
+/* ---- Index page: teaser cards linking to each draft's own page ---- */
 function DraftsList() {
   return (
     <section className="cb-section" style={{ background: 'var(--surface-page)' }}>
       <div className="cb-container">
         {DRAFTS.map((p, i) => (
-          <article key={p.slug} id={p.slug} style={{ padding: '44px 0', borderTop: i === 0 ? '1px solid var(--border-default)' : 'none', borderBottom: '1px solid var(--border-default)' }}>
+          <article key={p.slug} id={p.slug} style={{ padding: '36px 0', borderTop: i === 0 ? '1px solid var(--border-default)' : 'none', borderBottom: '1px solid var(--border-default)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16, flexWrap: 'wrap' }}>
               <StatusPill status={p.status} />
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{p.tag}</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{p.date}</span>
               <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{dReadTime(p.body)}</span>
             </div>
-            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 16px', maxWidth: 720 }}>{p.t}</h2>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 14px', maxWidth: 720 }}>
+              <a href={p.slug + '.html'} style={{ color: 'inherit', textDecoration: 'none' }}>{p.t}</a>
+            </h2>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--text-secondary)', maxWidth: 680, margin: '0 0 18px' }}>{dExcerpt(p.body, 220)}</p>
             {p.ledger && (
-              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)', margin: '0 0 24px' }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)', margin: '0 0 18px' }}>
                 Fact Ledger: {p.ledgerUrl ? <a href={p.ledgerUrl} target="_blank" rel="noopener" style={{ color: 'var(--leak)', textDecoration: 'underline' }}>{p.ledger}</a> : p.ledger}
               </p>
             )}
-            <DArticleBody body={p.body} ledgerUrl={p.ledgerUrl} />
+            <a href={p.slug + '.html'} style={{ fontFamily: 'var(--font-mono)', fontSize: 12.5, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--leak)', textDecoration: 'none' }}>
+              Read full draft ↗
+            </a>
           </article>
         ))}
       </div>
@@ -201,4 +213,53 @@ function DraftsList() {
   );
 }
 
-Object.assign(window, { DraftsHeader, DraftsList });
+/* ---- Single-article page: renders just one draft, with a banner + back link ---- */
+function DraftArticleHeader() {
+  return (
+    <section className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)', paddingBottom: 24 }}>
+      <div className="cb-container">
+        <div style={{ background: '#FDECEC', border: '1px solid #F3B4B0', borderRadius: 8, padding: '14px 18px', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+          <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: '#B42318' }}>● Draft workspace — not published</span>
+          <span style={{ fontFamily: 'var(--font-sans)', fontSize: 13, color: '#7A1B12' }}>Internal only. Publishes after NotebookLM audit + editor approval.</span>
+        </div>
+        <a href="drafts.html" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', textDecoration: 'none' }}>← All drafts</a>
+      </div>
+    </section>
+  );
+}
+
+function DraftArticlePage({ slug }) {
+  const p = DRAFTS.find(d => d.slug === slug);
+  if (!p) {
+    return (
+      <section className="cb-section">
+        <div className="cb-container">
+          <p style={{ fontFamily: 'var(--font-sans)', fontSize: 16, color: 'var(--text-secondary)' }}>Draft not found: {slug}</p>
+        </div>
+      </section>
+    );
+  }
+  return (
+    <section className="cb-section" style={{ background: 'var(--surface-page)' }}>
+      <div className="cb-container">
+        <article id={p.slug} style={{ padding: '12px 0 44px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16, flexWrap: 'wrap' }}>
+            <StatusPill status={p.status} />
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{p.tag}</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{p.date}</span>
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{dReadTime(p.body)}</span>
+          </div>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(2rem, 4vw, 2.8rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 16px', maxWidth: 760 }}>{p.t}</h1>
+          {p.ledger && (
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)', margin: '0 0 28px' }}>
+              Fact Ledger: {p.ledgerUrl ? <a href={p.ledgerUrl} target="_blank" rel="noopener" style={{ color: 'var(--leak)', textDecoration: 'underline' }}>{p.ledger}</a> : p.ledger}
+            </p>
+          )}
+          <DArticleBody body={p.body} ledgerUrl={p.ledgerUrl} />
+        </article>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { DraftsHeader, DraftsList, DraftArticleHeader, DraftArticlePage });
