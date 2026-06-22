@@ -4,13 +4,13 @@ const CB_P = window.ClienteleBuildersDesignSystem_6b1cb1;
 function LeakPipeline() {
   const { Eyebrow } = CB_P;
   const stages = [
-    { label: 'Attention',   href: 'blog.html#lead-shift' },
+    { label: 'Attention',   href: 'blog.html#guide-lead-generation' },
     { label: 'Recruiting',  href: 'blog.html#guide-insurance-recruiting' },
     { label: 'Licensing',   href: 'blog.html#rec-licensing-gap' },
     { label: 'Activation',  href: 'blog.html#onboarding' },
     { label: 'Production',  href: 'blog.html#guide-agent-production' },
     { label: 'Persistency', href: 'blog.html#persistency' },
-    { label: 'Revenue',     href: 'blog.html#dl-cost' },
+    { label: 'Revenue',     href: 'blog.html#guide-distribution-leaks' },
   ];
   return (
     <section className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)' }}>
