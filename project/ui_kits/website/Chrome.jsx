@@ -13,7 +13,7 @@ function Nav({ onAssess }) {
     }}>
       <div className="cb-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
         <a href="index.html" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-          <img src="../../assets/logo-mark.svg" alt="Clientele Builders" style={{ height: 40, width: 40, display: 'block' }} />
+          <img src="../../assets/logo.png" alt="Clientele Builders" style={{ height: 40, width: 40, borderRadius: 4, display: 'block' }} />
         </a>
         <nav className="cb-nav-links" style={{ display: 'flex', alignItems: 'center', gap: 30 }}>
           {links.map((l) => (
@@ -42,7 +42,7 @@ function Footer() {
         <div className="cb-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 40, paddingBottom: 56 }}>
           <div>
             <div style={{ marginBottom: 18 }}>
-              <img src="../../assets/logo-mark.svg" alt="Clientele Builders" style={{ height: 44, width: 44, display: 'block' }} />
+              <img src="../../assets/logo.png" alt="Clientele Builders" style={{ height: 44, width: 44, borderRadius: 4, display: 'block' }} />
             </div>
             <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-on-dark-muted)', maxWidth: 300 }}>
               The intelligence layer for life insurance distribution. We help you see where momentum is breaking — before you invest in the wrong solution.
