@@ -17,7 +17,7 @@ function Hero({ onAssess }) {
           We identify and fix revenue leaks inside life insurance distribution
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: 560, margin: '0 0 36px' }}>
-          Research, diagnostics, and growth systems for agencies, IMOs, and carriers. We start with the question nobody is asking — then find the answer in the data.
+          We study agencies, IMOs, and carriers to find exactly where they're losing agents, leads, and revenue — then show you the fix.
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
           <Button variant="primary" size="lg" onClick={onAssess}>Take the Assessment</Button>

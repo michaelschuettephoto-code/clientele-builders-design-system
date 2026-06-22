@@ -15,10 +15,10 @@ function LeakPipeline() {
   return (
     <section id="how" className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)', scrollMarginTop: 80 }}>
       <div className="cb-container" style={{ textAlign: 'center' }}>
-        <Eyebrow style={{ marginBottom: 18, display: 'inline-flex' }}>Where momentum breaks</Eyebrow>
+        <Eyebrow style={{ marginBottom: 18, display: 'inline-flex' }}>Where the money leaks</Eyebrow>
         <h2 className="cb-h2" style={{ maxWidth: 640, margin: '0 auto 12px' }}>The hidden cost of distribution leaks</h2>
         <p className="cb-lead-text" style={{ maxWidth: 480, margin: '0 auto 48px' }}>
-          Anywhere in this chain can leak. Most owners only look at production.
+          Money can leak out of any step in this chain. Most owners only check one step: production.
         </p>
         <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
           {stages.map((s, i) => (
@@ -30,7 +30,10 @@ function LeakPipeline() {
             </React.Fragment>
           ))}
         </div>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1.4, color: 'var(--text-primary)', maxWidth: 520, margin: '48px auto 0', letterSpacing: 'var(--tracking-tight)' }}>
+        <div style={{ maxWidth: 600, margin: '48px auto 0', textAlign: 'left' }}>
+          <window.IGGrowth />
+        </div>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1.4, color: 'var(--text-primary)', maxWidth: 520, margin: '32px auto 0', letterSpacing: 'var(--tracking-tight)' }}>
           "Damn... that's exactly what's happening."
         </p>
       </div>
