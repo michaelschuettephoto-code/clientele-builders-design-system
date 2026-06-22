@@ -7,12 +7,15 @@ function readTime(body) {
 }
 
 /* ---- Stat callout block ---- */
-function StatBlock({ stat, source }) {
+function StatBlock({ stat, source, context }) {
   return (
     <div style={{
       borderLeft: '3px solid var(--ink)', paddingLeft: 20, margin: '24px 0',
       display: 'flex', flexDirection: 'column', gap: 4,
     }}>
+      {context && (
+        <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, fontWeight: 700, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--leak)', marginBottom: 2 }}>{context}</span>
+      )}
       <span style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 22, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{stat}</span>
       {source && <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{source}</span>}
     </div>
@@ -55,14 +58,14 @@ const PILLARS = [
       { type: 'h3', anchor: 'dl-what-is-a-leak', text: 'What is a distribution leak?' },
       { type: 'p', text: "Most life insurance agencies don't have a lead problem. They have a system problem — and the system has multiple places where momentum quietly stalls before it ever becomes revenue. We call these distribution leaks, and every agency has them." },
       { type: 'p', text: "A distribution leak happens when something that should convert doesn't: a candidate who never gets licensed, a new agent who never activates, a client whose policy lapses in year two. Each of those events represents real money that entered the top of the funnel and never made it out the other side." },
-      { type: 'stat', stat: "Life insurance & annuities is a $1.1 trillion U.S. industry — but it grew at just 0.9% a year over the last five years.", source: 'IBISWorld, Life Insurance & Annuities in the US, Feb 2026' },
+      { type: 'stat', context: 'U.S. life insurance & annuities industry', stat: "Life insurance & annuities is a $1.1 trillion U.S. industry — but it grew at just 0.9% a year over the last five years.", source: 'IBISWorld, Life Insurance & Annuities in the US, Feb 2026' },
       { type: 'p', text: "That number reframes the whole problem. In a market growing under 1% a year, you cannot grow by waiting for the market to lift you. Growth has to come from converting more of what you already have — closing the leaks — not from the tide coming in." },
       { type: 'h3', anchor: 'dl-seven-stages', text: 'The 7-stage distribution chain' },
       { type: 'p', text: "Distribution doesn't break all at once — it breaks in stages. The chain runs: Attention → Recruiting → Licensing → Activation → Production → Persistency → Revenue. Each stage is a gate. Anything that stalls at a gate is a leak." },
       { type: 'p', text: "Most agencies only measure production and revenue — the last two stages. By the time a problem shows up there, it's already months old. The leak started somewhere upstream and nobody noticed until it became a P&L problem." },
       { type: 'h3', anchor: 'dl-cost', text: 'What leaks actually cost' },
       { type: 'p', text: "Distribution is where the money actually moves: more than half of U.S. life insurance is still sold through independent agents and brokers. If your distribution leaks, the product never reaches the market — no matter how good the product is." },
-      { type: 'stat', stat: "Roughly half of U.S. life insurance is distributed through independent agents — the single largest channel.", source: 'Statista; LIMRA; Insurance Information Institute, 2019–2023' },
+      { type: 'stat', context: 'U.S. life insurance distribution channels', stat: "Roughly half of U.S. life insurance is distributed through independent agents — the single largest channel.", source: 'Statista; LIMRA; Insurance Information Institute, 2019–2023' },
       { type: 'p', text: "The market is also strikingly fragmented: the largest carriers each hold only low-single-digit share, and roughly 90% of industry revenue sits outside the top handful of names (IBISWorld, 2026). Scale isn't the moat — distribution and trust are. That is the opening for a well-run agency or IMO." },
       { type: 'h3', anchor: 'dl-how-to-diagnose', text: 'How to diagnose your biggest leak' },
       { type: 'p', text: "Diagnosing the right leak starts with measuring conversion at every stage — not just production. Map your last 12 months: how many candidates entered, how many got licensed, how many activated, how many are still active today. The biggest drop-off is your primary leak." },
@@ -89,7 +92,7 @@ const PILLARS = [
     body: [
       { type: 'h3', anchor: 'rec-the-real-question', text: 'The question most agencies are asking wrong' },
       { type: 'p', text: "Recruiting is the most visible part of a distribution system and, for most agencies, the most misunderstood. The question isn't how many people you can get in the door. The question is how many of those people will still be producing two years from now." },
-      { type: 'stat', stat: "Roughly half of all U.S. life insurance is distributed through independent agents — so who you recruit is who reaches the market.", source: 'Statista; LIMRA; Insurance Information Institute, 2019–2023' },
+      { type: 'stat', context: 'U.S. life insurance distribution channels', stat: "Roughly half of all U.S. life insurance is distributed through independent agents — so who you recruit is who reaches the market.", source: 'Statista; LIMRA; Insurance Information Institute, 2019–2023' },
       { type: 'p', text: "In a $1.1 trillion industry growing under 1% a year (IBISWorld, 2026), recruiting isn't about flooding the pipeline — it's about building the channel that actually carries product to families. The agent is the distribution." },
       { type: 'h3', anchor: 'rec-funnel', text: 'Measuring the full recruiting funnel' },
       { type: 'p', text: "Most recruiting funnels are measured at the top — candidates, conversations, contracting — and not at the bottom, where it actually matters: licensed, activated, producing, retained. When you only measure volume, you optimize for volume. The agencies that grow sustainably measure conversion at every stage." },
@@ -123,7 +126,7 @@ const PILLARS = [
     body: [
       { type: 'h3', anchor: 'ret-real-cost', text: 'The real cost of losing an agent' },
       { type: 'p', text: "Agent retention is one of the highest-leverage and least-measured problems in distribution. Every agent who leaves takes with them the recruiting cost, the licensing time, the training investment, and — if they were producing — an active book of business that may follow them out." },
-      { type: 'stat', stat: "Retention is the gap the research itself can't fill. Clean, channel-level agent-retention benchmarks don't exist publicly — so the only number that matters is yours.", source: 'Clientele Builders, synthesis of 10 industry research databases, 2026' },
+      { type: 'stat', context: 'Research gap, not an external stat', stat: "Retention is the gap the research itself can't fill. Clean, channel-level agent-retention benchmarks don't exist publicly — so the only number that matters is yours.", source: 'Clientele Builders, synthesis of 10 industry research databases, 2026' },
       { type: 'p', text: "That is not a limitation — it's the opportunity. When an entire industry guesses at its own retention, the organization that actually measures 30/60/90-day and year-one retention can see leaks everyone else is flying blind on." },
       { type: 'h3', anchor: 'ret-why-leave', text: 'Why agents actually leave' },
       { type: 'p', text: "The conventional explanation for why agents leave is compensation. In our experience it's rarely the full story. The causes that tend to surface underneath are: unclear expectations early on, a lack of visible development path, inconsistent management attention, and a comp structure that doesn't reward the behaviors the agency actually needs." },
@@ -155,7 +158,7 @@ const PILLARS = [
     body: [
       { type: 'h3', anchor: 'prod-gap', text: 'The gap between your best and average producers' },
       { type: 'p', text: "The gap between your top producers and your average producers is rarely a talent gap. In most agencies, it's a process gap — a difference in what happens between 'I have a prospect' and 'I have a client.' Your best agents have figured it out. Everyone else is improvising." },
-      { type: 'stat', stat: "Production by agent and by IMO model is a flagged research gap — no public dataset tells you why your top agent outperforms. Your CRM does.", source: 'Clientele Builders, synthesis of 10 industry research databases, 2026' },
+      { type: 'stat', context: 'Research gap, not an external stat', stat: "Production by agent and by IMO model is a flagged research gap — no public dataset tells you why your top agent outperforms. Your CRM does.", source: 'Clientele Builders, synthesis of 10 industry research databases, 2026' },
       { type: 'p', text: "So the work isn't to chase an industry close-rate benchmark — it's to instrument your own funnel: time-to-first-appointment, appointment-to-proposal, proposal-to-close, by agent and by segment. The variance between your best and average producers is the map." },
       { type: 'h3', anchor: 'prod-process', text: "Why it's a process problem, not a talent problem" },
       { type: 'p', text: "Agent production is a systems problem. If your training doesn't translate to field behavior, if your CRM isn't tracking the right activity, if your comp structure rewards the wrong things — all of that shapes what an average agent does on a Tuesday afternoon when nobody is watching." },
@@ -187,14 +190,14 @@ const PILLARS = [
     body: [
       { type: 'h3', anchor: 'lead-shift', text: 'Where consumer attention has shifted' },
       { type: 'p', text: "Lead generation in life insurance has changed more in the last three years than in the decade before it. Consumers increasingly use technology and AI to research products — but the research is equally clear that they still want human help on big, emotional financial decisions. Digital starts the relationship; people close it." },
-      { type: 'stat', stat: "Consumers use digital tools and AI to research financial products — but still want a human advisor for high-stakes decisions.", source: 'Mintel & Business Source Ultimate, via Clientele Builders research synthesis, 2026' },
+      { type: 'stat', context: 'Financial product research behavior', stat: "Consumers use digital tools and AI to research financial products — but still want a human advisor for high-stakes decisions.", source: 'Mintel & Business Source Ultimate, via Clientele Builders research synthesis, 2026' },
       { type: 'h3', anchor: 'lead-trust', text: 'Trust signals that move people to conversations' },
       { type: 'p', text: "The strongest finding across the research is that trust is a conversion mechanism, not a slogan. People trust skilled human advisors, friends, and referrals far more than strangers or robo-tools — and when they trust the advisor and understand the decision, they are more likely to listen, buy, and stay." },
-      { type: 'stat', stat: "Trust increases advice-taking and follow-through. People act when they trust the advisor and understand the decision.", source: 'ProQuest & Business Source Ultimate, via Clientele Builders research synthesis, 2026' },
+      { type: 'stat', context: 'Financial advisor trust research', stat: "Trust increases advice-taking and follow-through. People act when they trust the advisor and understand the decision.", source: 'ProQuest & Business Source Ultimate, via Clientele Builders research synthesis, 2026' },
       { type: 'p', text: "This means marketing isn't a separate function from sales. It's the layer that determines whether the people entering your funnel already trust you a little before the first call. The signals that matter most aren't credentials and designations — they're relevance, clarity, and showing you understand the exact problem a prospect is facing." },
       { type: 'h3', anchor: 'lead-conversion', text: 'Traffic vs. conversion: which problem do you have?' },
       { type: 'p', text: "The first question most agencies ask is 'how do we get more leads?' The more important question is 'why aren't our current leads converting?' Volume masks conversion problems until the budget runs out. Before investing in lead generation, diagnose whether you have a traffic problem or a conversion problem — they require completely different solutions." },
-      { type: 'stat', stat: "Advisor usage is low overall — a large awareness gap — and the audience splits by age: millennials lean digital, boomers lean human.", source: 'MRI Simmons, via Clientele Builders research synthesis, 2026' },
+      { type: 'stat', context: 'Financial advisor usage by generation', stat: "Advisor usage is low overall — a large awareness gap — and the audience splits by age: millennials lean digital, boomers lean human.", source: 'MRI Simmons, via Clientele Builders research synthesis, 2026' },
       { type: 'p', text: "That split is why one message, one channel, and one conversion path can't serve everyone. The conversion rate you should care about isn't an industry average — it's your own, measured by lead source and by segment." },
       { type: 'h3', anchor: 'lead-system', text: "Building a lead system that doesn't depend on one channel" },
       { type: 'p', text: "Single-channel dependency is its own distribution leak. Agencies that rely entirely on referrals, or entirely on digital ads, or entirely on carrier leads are one algorithm change or relationship shift away from a revenue crisis. A durable lead system has multiple sources, each with a clear conversion rate you can measure and improve." },
@@ -334,7 +337,7 @@ function ArticleBody({ body }) {
             margin: '32px 0 12px', scrollMarginTop: 96,
           }}>{block.text}</h3>
         );
-        if (block.type === 'stat') return <StatBlock key={i} stat={block.stat} source={block.source} />;
+        if (block.type === 'stat') return <StatBlock key={i} stat={block.stat} source={block.source} context={block.context} />;
         return <p key={i} style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text-secondary)', margin: '0 0 14px' }}>{block.text}</p>;
       })}
     </div>
