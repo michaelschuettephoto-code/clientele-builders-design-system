@@ -87,7 +87,7 @@ function Diagnostics() {
     { icon: 'activity',        t: 'Technology & Data', d: 'Seeing what is working and what is not.',                  slug: 'technology-data' },
   ];
   return (
-    <section className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)' }}>
+    <section id="how" className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)', scrollMarginTop: 80 }}>
       <div className="cb-container">
         <div style={{ maxWidth: 640, marginBottom: 48 }}>
           <Eyebrow style={{ marginBottom: 18, display: 'inline-flex' }}>What we diagnose</Eyebrow>
