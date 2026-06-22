@@ -58,15 +58,16 @@ const PILLARS = [
       { type: 'h3', anchor: 'dl-what-is-a-leak', text: 'What is a distribution leak?' },
       { type: 'p', text: "Most life insurance agencies don't have a lead problem. They have a system problem — and the system has multiple places where momentum quietly stalls before it ever becomes revenue. We call these distribution leaks, and every agency has them." },
       { type: 'p', text: "A distribution leak happens when something that should convert doesn't: a candidate who never gets licensed, a new agent who never activates, a client whose policy lapses in year two. Each of those events represents real money that entered the top of the funnel and never made it out the other side." },
-      { type: 'stat', context: 'U.S. life insurance & annuities industry', stat: "Life insurance & annuities is a $1.1 trillion U.S. industry — but it grew at just 0.9% a year over the last five years.", source: 'IBISWorld, Life Insurance & Annuities in the US, Feb 2026' },
+      { type: 'figure', figure: 'growth' },
       { type: 'p', text: "That number reframes the whole problem. In a market growing under 1% a year, you cannot grow by waiting for the market to lift you. Growth has to come from converting more of what you already have — closing the leaks — not from the tide coming in." },
       { type: 'h3', anchor: 'dl-seven-stages', text: 'The 7-stage distribution chain' },
       { type: 'p', text: "Distribution doesn't break all at once — it breaks in stages. The chain runs: Attention → Recruiting → Licensing → Activation → Production → Persistency → Revenue. Each stage is a gate. Anything that stalls at a gate is a leak." },
       { type: 'p', text: "Most agencies only measure production and revenue — the last two stages. By the time a problem shows up there, it's already months old. The leak started somewhere upstream and nobody noticed until it became a P&L problem." },
       { type: 'h3', anchor: 'dl-cost', text: 'What leaks actually cost' },
       { type: 'p', text: "Distribution is where the money actually moves: more than half of U.S. life insurance is still sold through independent agents and brokers. If your distribution leaks, the product never reaches the market — no matter how good the product is." },
-      { type: 'stat', context: 'U.S. life insurance distribution channels', stat: "Roughly half of U.S. life insurance is distributed through independent agents — the single largest channel.", source: 'Statista; LIMRA; Insurance Information Institute, 2019–2023' },
-      { type: 'p', text: "The market is also strikingly fragmented: the largest carriers each hold only low-single-digit share, and roughly 90% of industry revenue sits outside the top handful of names (IBISWorld, 2026). Scale isn't the moat — distribution and trust are. That is the opening for a well-run agency or IMO." },
+      { type: 'figure', figure: 'distribution' },
+      { type: 'p', text: "The market is also strikingly fragmented. Scale isn't the moat — distribution and trust are. That is the opening for a well-run agency or IMO." },
+      { type: 'figure', figure: 'fragmentation' },
       { type: 'h3', anchor: 'dl-how-to-diagnose', text: 'How to diagnose your biggest leak' },
       { type: 'p', text: "Diagnosing the right leak starts with measuring conversion at every stage — not just production. Map your last 12 months: how many candidates entered, how many got licensed, how many activated, how many are still active today. The biggest drop-off is your primary leak." },
       { type: 'p', text: "The Distribution Leak Assessment scores all 8 systems simultaneously and identifies which one is costing you the most. It takes 12 minutes and produces a prioritized diagnosis — not a generic report." },
@@ -92,8 +93,8 @@ const PILLARS = [
     body: [
       { type: 'h3', anchor: 'rec-the-real-question', text: 'The question most agencies are asking wrong' },
       { type: 'p', text: "Recruiting is the most visible part of a distribution system and, for most agencies, the most misunderstood. The question isn't how many people you can get in the door. The question is how many of those people will still be producing two years from now." },
-      { type: 'stat', context: 'U.S. life insurance distribution channels', stat: "Roughly half of all U.S. life insurance is distributed through independent agents — so who you recruit is who reaches the market.", source: 'Statista; LIMRA; Insurance Information Institute, 2019–2023' },
-      { type: 'p', text: "In a $1.1 trillion industry growing under 1% a year (IBISWorld, 2026), recruiting isn't about flooding the pipeline — it's about building the channel that actually carries product to families. The agent is the distribution." },
+      { type: 'figure', figure: 'distribution' },
+      { type: 'p', text: "So who you recruit is who reaches the market. In a $1.1 trillion industry growing under 1% a year, recruiting isn't about flooding the pipeline — it's about building the channel that actually carries product to families. The agent is the distribution." },
       { type: 'h3', anchor: 'rec-funnel', text: 'Measuring the full recruiting funnel' },
       { type: 'p', text: "Most recruiting funnels are measured at the top — candidates, conversations, contracting — and not at the bottom, where it actually matters: licensed, activated, producing, retained. When you only measure volume, you optimize for volume. The agencies that grow sustainably measure conversion at every stage." },
       { type: 'p', text: "The metric that predicts long-term growth isn't candidates contracted. It's the percentage of contracted agents who are still actively writing business well into year two. Most agencies don't track this number — which is exactly why it leaks. (Industry-wide retention benchmarks are thin and inconsistent, so the only number that matters is the one measured inside your own organization.)" },
@@ -338,6 +339,10 @@ function ArticleBody({ body }) {
           }}>{block.text}</h3>
         );
         if (block.type === 'stat') return <StatBlock key={i} stat={block.stat} source={block.source} context={block.context} />;
+        if (block.type === 'figure') {
+          const F = { growth: window.IGGrowth, fragmentation: window.IGFragmentation, distribution: window.IGDistribution }[block.figure];
+          return F ? <F key={i} /> : null;
+        }
         return <p key={i} style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text-secondary)', margin: '0 0 14px' }}>{block.text}</p>;
       })}
     </div>
