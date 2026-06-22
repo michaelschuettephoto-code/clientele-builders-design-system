@@ -14,13 +14,13 @@ function Hero({ onAssess }) {
           fontFamily: 'var(--font-display)', fontWeight: 500, color: 'var(--text-primary)',
           fontSize: 'clamp(2.6rem, 5.5vw, 4.5rem)', lineHeight: 1.06, letterSpacing: 'var(--tracking-tighter)', margin: '0 0 24px', maxWidth: 880,
         }}>
-          We help IMO owners find the leaks in their distribution system
+          Find the leaks in your distribution system
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: 560, margin: '0 0 36px' }}>
-          You're recruiting, buying leads, posting content, maybe running new software — but production still isn't where it should be. We find exactly where it's leaking, before you spend more money guessing.
+          Most life insurance organizations don't have a lead problem. They have recruiting, onboarding, activation, trust, sales, retention, or data leaks costing them revenue every month.
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
-          <Button variant="primary" size="lg" onClick={onAssess}>Take the Assessment</Button>
+          <Button variant="primary" size="lg" onClick={onAssess}>Take the Distribution Leak Assessment</Button>
           <a href="blog.html" style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--border-strong)', paddingBottom: 2 }}>Explore the free library →</a>
         </div>
         <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '20px 0 0' }}>

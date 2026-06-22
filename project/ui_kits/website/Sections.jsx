@@ -30,10 +30,7 @@ function LeakPipeline() {
             </React.Fragment>
           ))}
         </div>
-        <div style={{ maxWidth: 600, margin: '48px auto 0', textAlign: 'left' }}>
-          <window.IGGrowth />
-        </div>
-        <p style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1.4, color: 'var(--text-primary)', maxWidth: 520, margin: '32px auto 0', letterSpacing: 'var(--tracking-tight)' }}>
+        <p style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1.4, color: 'var(--text-primary)', maxWidth: 520, margin: '48px auto 0', letterSpacing: 'var(--tracking-tight)' }}>
           "Damn... that's exactly what's happening."
         </p>
       </div>
