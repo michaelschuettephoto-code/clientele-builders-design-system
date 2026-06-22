@@ -3,7 +3,15 @@ const CB_P = window.ClienteleBuildersDesignSystem_6b1cb1;
 /* ---- Section 2: the distribution chain & where it leaks ---- */
 function LeakPipeline() {
   const { Eyebrow } = CB_P;
-  const stages = ['Attention', 'Recruiting', 'Licensing', 'Activation', 'Production', 'Persistency', 'Revenue'];
+  const stages = [
+    { label: 'Attention',   href: 'blog.html#lead-shift' },
+    { label: 'Recruiting',  href: 'blog.html#guide-insurance-recruiting' },
+    { label: 'Licensing',   href: 'blog.html#rec-licensing-gap' },
+    { label: 'Activation',  href: 'blog.html#onboarding' },
+    { label: 'Production',  href: 'blog.html#guide-agent-production' },
+    { label: 'Persistency', href: 'blog.html#persistency' },
+    { label: 'Revenue',     href: 'blog.html#dl-cost' },
+  ];
   return (
     <section className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)' }}>
       <div className="cb-container" style={{ textAlign: 'center' }}>
@@ -14,8 +22,10 @@ function LeakPipeline() {
         </p>
         <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: 0 }}>
           {stages.map((s, i) => (
-            <React.Fragment key={s}>
-              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 22, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)' }}>{s}</span>
+            <React.Fragment key={s.label}>
+              <a href={s.href} style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 22, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid transparent' }}
+                 onMouseEnter={(e) => e.currentTarget.style.borderBottomColor = 'var(--text-primary)'}
+                 onMouseLeave={(e) => e.currentTarget.style.borderBottomColor = 'transparent'}>{s.label}</a>
               {i < stages.length - 1 && <Icon name="arrow-down" size={18} style={{ color: 'var(--neutral-400)', margin: '6px 0' }} />}
             </React.Fragment>
           ))}
