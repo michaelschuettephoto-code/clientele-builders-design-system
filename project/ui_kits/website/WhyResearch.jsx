@@ -31,33 +31,20 @@ function WhyMatters() {
   );
 }
 
-/* ---- Section 5: what the research says — a few bullets, not a thesis ---- */
+/* ---- Section 5: the data — one real stat, not a thesis ---- */
 function Research() {
   const { Eyebrow } = CB_W;
-  const themes = [
-    'Trust drives advice adoption.',
-    'Digital attention is increasing.',
-    'Consumers still want human guidance.',
-    'AI is changing research behavior.',
-    'Distribution efficiency matters more than ever.',
-  ];
   return (
     <section className="cb-section" style={{ background: 'var(--ink)', color: 'var(--text-on-dark)' }}>
       <div className="cb-container">
-        <Eyebrow tone="accent" style={{ marginBottom: 18, display: 'inline-flex' }}>What the research says</Eyebrow>
-        <h2 className="cb-h2" style={{ color: '#fff', maxWidth: 560 }}>The themes shaping distribution</h2>
-        <ul style={{ listStyle: 'none', margin: '36px 0 0', padding: 0, display: 'flex', flexDirection: 'column', gap: 0, maxWidth: 560 }}>
-          {themes.map((t, i) => (
-            <li key={t} style={{
-              display: 'flex', alignItems: 'center', gap: 16, padding: '20px 0',
-              borderTop: '1px solid var(--border-on-dark)',
-              fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 22, letterSpacing: 'var(--tracking-tight)', color: '#fff',
-            }}>
-              <Icon name="arrow-up-right" size={20} style={{ color: 'var(--text-on-dark-muted)', flexShrink: 0 }} />
-              {t}
-            </li>
-          ))}
-        </ul>
+        <Eyebrow tone="accent" style={{ marginBottom: 18, display: 'inline-flex' }}>The data</Eyebrow>
+        <h2 className="cb-h2" style={{ color: '#fff', maxWidth: 560 }}>Half the market runs through people like you</h2>
+        <p className="cb-lead-text" style={{ color: 'var(--text-on-dark-muted)', maxWidth: 480, margin: '0 0 36px' }}>
+          This isn't a guess. It's what the data says about who actually sells life insurance in this country.
+        </p>
+        <div style={{ maxWidth: 600 }}>
+          <window.IGDistribution />
+        </div>
       </div>
     </section>
   );
