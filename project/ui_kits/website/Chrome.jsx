@@ -5,10 +5,8 @@ const CB = window.ClienteleBuildersDesignSystem_6b1cb1;
 function Nav({ onAssess }) {
   const { Button } = CB;
   const links = [
-    { label: 'How it works',     href: 'index.html#how' },
-    { label: 'The 8 categories', href: 'index.html#categories' },
-    { label: 'Why it matters',   href: 'index.html#why' },
-    { label: 'Free library',     href: 'blog.html' },
+    { label: 'How it works', href: 'index.html#how' },
+    { label: 'Free library', href: 'blog.html' },
   ];
   return (
     <header style={{
