@@ -13,7 +13,7 @@ function LeakPipeline() {
     { label: 'Revenue',     href: 'blog.html#guide-distribution-leaks' },
   ];
   return (
-    <section className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)' }}>
+    <section id="how" className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)', scrollMarginTop: 80 }}>
       <div className="cb-container" style={{ textAlign: 'center' }}>
         <Eyebrow style={{ marginBottom: 18, display: 'inline-flex' }}>Where momentum breaks</Eyebrow>
         <h2 className="cb-h2" style={{ maxWidth: 640, margin: '0 auto 12px' }}>The hidden cost of distribution leaks</h2>
@@ -50,7 +50,7 @@ function LeakCategories() {
     { icon: 'graduation-cap',  label: 'Training',         slug: 'guide-agent-production',       q: "Why isn't my training producing results?" },
   ];
   return (
-    <section id="categories" className="cb-section" style={{ background: 'var(--surface-card)', borderBottom: '1px solid var(--border-default)' }}>
+    <section id="categories" className="cb-section" style={{ background: 'var(--surface-card)', borderBottom: '1px solid var(--border-default)', scrollMarginTop: 80 }}>
       <div className="cb-container">
         <div style={{ maxWidth: 640, marginBottom: 48 }}>
           <Eyebrow style={{ marginBottom: 18, display: 'inline-flex' }}>Revenue leak categories</Eyebrow>
@@ -127,7 +127,7 @@ function LatestInsights() {
             <h2 className="cb-h2" style={{ margin: 0 }}>From the research library</h2>
           </div>
           <a href="blog.html" style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--border-strong)', paddingBottom: 2 }}>
-            View all articles →
+            Explore the free library →
           </a>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>

@@ -4,7 +4,12 @@ const CB = window.ClienteleBuildersDesignSystem_6b1cb1;
 /* ---- Nav ------------------------------------------------------------ */
 function Nav({ onAssess }) {
   const { Button } = CB;
-  const links = ['How it works', 'The 8 categories', 'Why it matters', 'Research'];
+  const links = [
+    { label: 'How it works',     href: 'index.html#how' },
+    { label: 'The 8 categories', href: 'index.html#categories' },
+    { label: 'Why it matters',   href: 'index.html#why' },
+    { label: 'Free library',     href: 'blog.html' },
+  ];
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 50,
@@ -17,10 +22,10 @@ function Nav({ onAssess }) {
         </a>
         <nav className="cb-nav-links" style={{ display: 'flex', alignItems: 'center', gap: 30 }}>
           {links.map((l) => (
-            <a key={l} href="#" onClick={(e) => e.preventDefault()} style={{
+            <a key={l.label} href={l.href} style={{
               fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500,
               color: 'var(--text-secondary)', textDecoration: 'none',
-            }}>{l}</a>
+            }}>{l.label}</a>
           ))}
         </nav>
         <Button size="sm" onClick={onAssess}>Take the Assessment</Button>

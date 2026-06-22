@@ -9,7 +9,7 @@ function WhyMatters() {
     'If recruiting conversion improves by 15%…',
   ];
   return (
-    <section className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)' }}>
+    <section id="why" className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)', scrollMarginTop: 80 }}>
       <div className="cb-container" style={{ textAlign: 'center' }}>
         <Eyebrow style={{ marginBottom: 18, display: 'inline-flex' }}>Why it matters</Eyebrow>
         <h2 className="cb-h2" style={{ maxWidth: 640, margin: '0 auto 40px' }}>Small fixes to a leaking system compound fast</h2>
@@ -69,10 +69,16 @@ function AssessmentCTA({ onAssess }) {
   return (
     <section className="cb-section" style={{ background: 'var(--surface-card)' }}>
       <div className="cb-container" style={{ textAlign: 'center' }}>
-        <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(2.25rem, 5vw, 4rem)', lineHeight: 1.06, letterSpacing: 'var(--tracking-tighter)', color: 'var(--text-primary)', margin: '0 0 36px' }}>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(2.25rem, 5vw, 4rem)', lineHeight: 1.06, letterSpacing: 'var(--tracking-tighter)', color: 'var(--text-primary)', margin: '0 0 16px' }}>
           See where your system is leaking.
         </h2>
-        <Button variant="primary" size="lg" onClick={onAssess}>Take the Distribution Leak Assessment</Button>
+        <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: 520, margin: '0 auto 36px' }}>
+          Take the 12-minute assessment for a prioritized diagnosis — or start with the free research library.
+        </p>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
+          <Button variant="primary" size="lg" onClick={onAssess}>Take the Assessment</Button>
+          <a href="blog.html" style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--border-strong)', paddingBottom: 2 }}>Explore the free library →</a>
+        </div>
       </div>
     </section>
   );
