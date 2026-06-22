@@ -21,10 +21,9 @@ function Hero({ onAssess }) {
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
           <Button variant="primary" size="lg" onClick={onAssess}>Take the Distribution Leak Assessment</Button>
-          <a href="blog.html" style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--border-strong)', paddingBottom: 2 }}>Explore the free library →</a>
         </div>
         <p style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', margin: '20px 0 0' }}>
-          12-minute assessment · Research library always free
+          Takes about 3 minutes
         </p>
       </div>
     </section>

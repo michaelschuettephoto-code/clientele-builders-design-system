@@ -73,11 +73,10 @@ function AssessmentCTA({ onAssess }) {
           See where your system is leaking.
         </h2>
         <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: 520, margin: '0 auto 36px' }}>
-          Take the 12-minute assessment for a prioritized diagnosis — or start with the free research library.
+          Takes about 3 minutes for a prioritized diagnosis.
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
           <Button variant="primary" size="lg" onClick={onAssess}>Take the Assessment</Button>
-          <a href="blog.html" style={{ fontFamily: 'var(--font-sans)', fontSize: 15, fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--border-strong)', paddingBottom: 2 }}>Explore the free library →</a>
         </div>
       </div>
     </section>

@@ -34,33 +34,16 @@ function Nav({ onAssess }) {
 
 /* ---- Footer --------------------------------------------------------- */
 function Footer() {
-  const cols = [
-    { h: 'Diagnostic', items: ['Take the Assessment', 'The 8 categories', 'Revenue Leak Calculator', 'Sample report'] },
-    { h: 'Firm', items: ['What we believe', 'How we work', 'Who we serve', 'Contact'] },
-    { h: 'Intelligence', items: ['Research notes', 'Distribution index', 'Benchmarks'] },
-  ];
   return (
     <footer style={{ background: 'var(--ink)', color: 'var(--text-on-dark)' }}>
       <div className="cb-container" style={{ paddingTop: 72, paddingBottom: 40 }}>
-        <div className="cb-footer-grid" style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr 1fr', gap: 40, paddingBottom: 56 }}>
-          <div>
-            <div style={{ marginBottom: 18 }}>
-              <img src="../../assets/logo.png?v=2" alt="Clientele Builders" style={{ height: 44, width: 44, borderRadius: 4, display: 'block' }} />
-            </div>
-            <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-on-dark-muted)', maxWidth: 300 }}>
-              The intelligence layer for life insurance distribution. We help you see where momentum is breaking — before you invest in the wrong solution.
-            </p>
+        <div style={{ paddingBottom: 56 }}>
+          <div style={{ marginBottom: 18 }}>
+            <img src="../../assets/logo.png?v=2" alt="Clientele Builders" style={{ height: 44, width: 44, borderRadius: 4, display: 'block' }} />
           </div>
-          {cols.map((c) => (
-            <div key={c.h}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.14em', textTransform: 'uppercase', color: 'var(--scan)', marginBottom: 16 }}>{c.h}</div>
-              <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 11 }}>
-                {c.items.map((i) => (
-                  <li key={i}><a href="#" onClick={(e)=>e.preventDefault()} style={{ fontSize: 14, color: 'var(--text-on-dark-muted)', textDecoration: 'none' }}>{i}</a></li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <p style={{ fontSize: 14, lineHeight: 1.6, color: 'var(--text-on-dark-muted)', maxWidth: 300 }}>
+            The intelligence layer for life insurance distribution. We help you see where momentum is breaking — before you invest in the wrong solution.
+          </p>
         </div>
         <div style={{ borderTop: '1px solid var(--border-on-dark)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-on-dark-muted)' }}>© 2026 Clientele Builders</span>
