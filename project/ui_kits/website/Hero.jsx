@@ -14,10 +14,10 @@ function Hero({ onAssess }) {
           fontFamily: 'var(--font-display)', fontWeight: 500, color: 'var(--text-primary)',
           fontSize: 'clamp(2.6rem, 5.5vw, 4.5rem)', lineHeight: 1.06, letterSpacing: 'var(--tracking-tighter)', margin: '0 0 24px', maxWidth: 880,
         }}>
-          We identify and fix revenue leaks inside life insurance distribution
+          We help IMO owners find the leaks in their distribution system
         </h1>
         <p style={{ fontSize: 18, lineHeight: 1.6, color: 'var(--text-secondary)', maxWidth: 560, margin: '0 0 36px' }}>
-          We study agencies, IMOs, and carriers to find exactly where they're losing agents, leads, and revenue — then show you the fix.
+          You're recruiting, buying leads, posting content, maybe running new software — but production still isn't where it should be. We find exactly where it's leaking, before you spend more money guessing.
         </p>
         <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center' }}>
           <Button variant="primary" size="lg" onClick={onAssess}>Take the Assessment</Button>
