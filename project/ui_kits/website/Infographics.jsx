@@ -119,18 +119,18 @@ function IGFragmentation({ ledgerUrl }) {
 /* ---- 3. Distribution channels: independent agents lead ---- */
 function IGDistribution({ ledgerUrl }) {
   const rows = [
-    { label: 'Independent agents', v: 50, hi: true },
-    { label: 'Captive / affiliated agents', v: 38, hi: false },
-    { label: 'Other channels', v: 7, hi: false },
-    { label: 'Direct response', v: 5, hi: false },
+    { label: 'Independent agents', v: 52, hi: true },
+    { label: 'Captive / affiliated agents', v: 37, hi: false },
+    { label: 'Direct response', v: 6, hi: false },
+    { label: 'Other channels', v: 5, hi: false },
   ];
   return (
     <FigureFrame kicker="Where the money moves" title="One channel sells more than all the others combined" source="Statista; LIMRA; Insurance Information Institute, 2019–2023" ledgerUrl={ledgerUrl}>
       <div style={{ textAlign: 'center', marginBottom: 20 }}>
-        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 56, color: 'var(--leak)', lineHeight: 1 }}>50%</div>
+        <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 56, color: 'var(--leak)', lineHeight: 1 }}>52%</div>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6 }}>Of life insurance distribution runs through an independent agent</div>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 16, lineHeight: 1.6, color: 'var(--text-primary)', margin: '14px 0 0', maxWidth: 440, marginLeft: 'auto', marginRight: 'auto' }}>
-          Your distribution isn't a side function — for half the market, it's the entire sale.
+          Your distribution isn't a side function — for most of the market, it's the entire sale.
         </p>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
