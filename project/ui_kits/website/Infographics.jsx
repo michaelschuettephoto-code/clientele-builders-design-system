@@ -128,7 +128,7 @@ function IGDistribution({ ledgerUrl }) {
     <FigureFrame kicker="Where the money moves" title="One channel sells more than all the others combined" source="Statista; LIMRA; Insurance Information Institute, 2019–2023" ledgerUrl={ledgerUrl}>
       <div style={{ textAlign: 'center', marginBottom: 20 }}>
         <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 56, color: 'var(--leak)', lineHeight: 1 }}>50%</div>
-        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6 }}>Of all life insurance policies are sold by an independent agent</div>
+        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6 }}>Of life insurance distribution runs through an independent agent</div>
         <p style={{ fontFamily: 'var(--font-sans)', fontSize: 16, lineHeight: 1.6, color: 'var(--text-primary)', margin: '14px 0 0', maxWidth: 440, marginLeft: 'auto', marginRight: 'auto' }}>
           Your distribution isn't a side function — for half the market, it's the entire sale.
         </p>
