@@ -317,7 +317,7 @@ function BlogHeader() {
         </p>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           {categories.map((c) => (
-            <a key={c.slug} href={'blog.html#' + c.slug} style={{
+            <a key={c.slug} href={c.slug + '.html'} style={{
               fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase',
               color: 'var(--text-primary)', textDecoration: 'none',
               border: '1px solid var(--border-strong)', borderRadius: 4, padding: '7px 14px',
@@ -353,46 +353,31 @@ function ArticleBody({ body }) {
   );
 }
 
-/* ---- Pillar card ---- */
+/* ---- Pillar card (index teaser — links out to its own page) ---- */
 function PillarCard({ p, index }) {
   const rt = readTime(p.body.filter(b => b.type === 'p').map(b => b.text));
+  const excerpt = (p.body.find(b => b.type === 'p') || {}).text || '';
   return (
-    <article id={p.slug} style={{
-      padding: '52px 0',
+    <article style={{
+      padding: '40px 0',
       borderTop: index === 0 ? '1px solid var(--border-default)' : 'none',
       borderBottom: '1px solid var(--border-default)',
-      scrollMarginTop: 96,
     }}>
-      <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 14, flexWrap: 'wrap' }}>
         <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--leak)', fontWeight: 600 }}>{p.tag}</span>
         <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{p.date}</span>
         <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{rt}</span>
       </div>
-      <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 28px', maxWidth: 720 }}>{p.t}</h2>
-      {p.toc && <TOC items={p.toc} />}
-      <ArticleBody body={p.body} />
-      <div style={{ marginTop: 36 }}>
-        <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 12 }}>Supporting articles</p>
-        <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-          {p.children.map((c, ci) => (
-            <li key={c.slug}>
-              <a href={'blog.html#' + c.slug} style={{
-                display: 'flex', alignItems: 'center', gap: 12, padding: '12px 0',
-                borderTop: ci === 0 ? '1px solid var(--border-default)' : 'none',
-                borderBottom: '1px solid var(--border-default)', textDecoration: 'none',
-              }}>
-                <Icon name="arrow-right" size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 500, color: 'var(--text-primary)', letterSpacing: 'var(--tracking-tight)' }}>{c.t}</span>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <a href={p.slug + '.html'} style={{ textDecoration: 'none', color: 'inherit' }}>
+        <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(1.4rem, 2.6vw, 1.9rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 12px', maxWidth: 720 }}>{p.t}</h2>
+      </a>
+      <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--text-secondary)', margin: '0 0 16px', maxWidth: 640 }}>{excerpt}</p>
+      <a href={p.slug + '.html'} style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--border-strong)', paddingBottom: 2 }}>Read the full guide →</a>
     </article>
   );
 }
 
-/* ---- Full blog list ---- */
+/* ---- Full blog index (teasers only — every article links to its own page) ---- */
 function BlogList() {
   const { Eyebrow } = CB_BL;
   return (
@@ -409,23 +394,21 @@ function BlogList() {
           <Eyebrow style={{ marginBottom: 32, display: 'inline-flex' }}>Supporting articles</Eyebrow>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {CHILD_POSTS.map((p, i) => (
-              <article key={p.slug} id={p.slug} style={{
-                padding: '40px 0',
+              <article key={p.slug} style={{
+                padding: '32px 0',
                 borderTop: i === 0 ? '1px solid var(--border-default)' : 'none',
                 borderBottom: '1px solid var(--border-default)',
-                scrollMarginTop: 96,
               }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 12, flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 10, flexWrap: 'wrap' }}>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{p.tag}</span>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{p.date}</span>
                   <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{readTime(p.body)}</span>
                 </div>
-                <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 24, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 18px', maxWidth: 640 }}>{p.t}</h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 14, maxWidth: 640 }}>
-                  {p.body.map((para, j) => (
-                    <p key={j} style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>{para}</p>
-                  ))}
-                </div>
+                <a href={p.slug + '.html'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <h2 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 22, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 10px', maxWidth: 640 }}>{p.t}</h2>
+                </a>
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--text-secondary)', margin: '0 0 14px', maxWidth: 640 }}>{p.body[0]}</p>
+                <a href={p.slug + '.html'} style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500, color: 'var(--text-primary)', textDecoration: 'none', borderBottom: '1px solid var(--border-strong)', paddingBottom: 2 }}>Read more →</a>
               </article>
             ))}
           </div>
@@ -435,4 +418,80 @@ function BlogList() {
   );
 }
 
-Object.assign(window, { BlogHeader, BlogList });
+/* ---- Single article page — pillar guide or supporting post, looked up by slug ---- */
+function ArticlePage({ slug }) {
+  const pillar = PILLARS.find(p => p.slug === slug);
+  if (pillar) {
+    const rt = readTime(pillar.body.filter(b => b.type === 'p').map(b => b.text));
+    return (
+      <section className="cb-section" style={{ background: 'var(--surface-page)' }}>
+        <div className="cb-container">
+          <a href="blog.html" style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500, color: 'var(--text-muted)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 28 }}>
+            <Icon name="arrow-left" size={14} /> Research &amp; Notes
+          </a>
+          <article style={{ paddingBottom: 60, maxWidth: 760 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--leak)', fontWeight: 600 }}>{pillar.tag}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{pillar.date}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{rt}</span>
+            </div>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(2rem, 4vw, 2.8rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 28px', maxWidth: 740 }}>{pillar.t}</h1>
+            {pillar.toc && <TOC items={pillar.toc} />}
+            <ArticleBody body={pillar.body} />
+            <div style={{ marginTop: 36 }}>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 12 }}>Supporting articles</p>
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                {pillar.children.map((c, ci) => (
+                  <li key={c.slug}>
+                    <a href={c.slug + '.html'} style={{
+                      display: 'flex', alignItems: 'center', gap: 12, padding: '12px 0',
+                      borderTop: ci === 0 ? '1px solid var(--border-default)' : 'none',
+                      borderBottom: '1px solid var(--border-default)', textDecoration: 'none',
+                    }}>
+                      <Icon name="arrow-right" size={14} style={{ color: 'var(--text-muted)', flexShrink: 0 }} />
+                      <span style={{ fontFamily: 'var(--font-display)', fontSize: 15, fontWeight: 500, color: 'var(--text-primary)', letterSpacing: 'var(--tracking-tight)' }}>{c.t}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+    );
+  }
+  const post = CHILD_POSTS.find(p => p.slug === slug);
+  if (post) {
+    return (
+      <section className="cb-section" style={{ background: 'var(--surface-page)' }}>
+        <div className="cb-container">
+          <a href="blog.html" style={{ fontFamily: 'var(--font-sans)', fontSize: 14, fontWeight: 500, color: 'var(--text-muted)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 28 }}>
+            <Icon name="arrow-left" size={14} /> Research &amp; Notes
+          </a>
+          <article style={{ paddingBottom: 60, maxWidth: 680 }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 16, marginBottom: 16, flexWrap: 'wrap' }}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: 'var(--tracking-label)', textTransform: 'uppercase', color: 'var(--text-muted)' }}>{post.tag}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{post.date}</span>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--text-muted)' }}>{readTime(post.body)}</span>
+            </div>
+            <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 'clamp(1.8rem, 3.4vw, 2.4rem)', letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 24px', maxWidth: 660 }}>{post.t}</h1>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+              {post.body.map((para, j) => (
+                <p key={j} style={{ fontSize: 16, lineHeight: 1.75, color: 'var(--text-secondary)', margin: 0 }}>{para}</p>
+              ))}
+            </div>
+          </article>
+        </div>
+      </section>
+    );
+  }
+  return (
+    <section className="cb-section">
+      <div className="cb-container">
+        <p style={{ fontFamily: 'var(--font-sans)', fontSize: 16, color: 'var(--text-secondary)' }}>Article not found: {slug}</p>
+      </div>
+    </section>
+  );
+}
+
+Object.assign(window, { BlogHeader, BlogList, ArticlePage });

@@ -1,11 +1,10 @@
-<!-- @dsCard group="Website" viewport="1280x780" name="Blog" subtitle="Research & notes — minimal scannable list" -->
-<!-- @startingPoint section="Website" subtitle="Clientele Builders blog index" viewport="1280x780" -->
+<!-- @dsCard group="Website" viewport="1280x780" name="Article — The Complete Guide to Insurance Lead Generation" subtitle="Standalone article page" -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Research &amp; Notes — Clientele Builders</title>
+<title>The Complete Guide to Insurance Lead Generation — Clientele Builders</title>
 <link rel="stylesheet" href="../../styles.css" />
 <style>
   body { margin: 0; background: var(--surface-page); }
@@ -56,8 +55,7 @@
       <React.Fragment>
         <Nav onAssess={assess} />
         <main>
-          <BlogHeader />
-          <BlogList />
+          <ArticlePage slug="guide-lead-generation" />
         </main>
         <Footer />
         {open && <Assessment onClose={() => setOpen(false)} />}

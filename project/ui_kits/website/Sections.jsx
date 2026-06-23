@@ -4,13 +4,13 @@ const CB_P = window.ClienteleBuildersDesignSystem_6b1cb1;
 function LeakPipeline() {
   const { Eyebrow } = CB_P;
   const stages = [
-    { label: 'Attention',   href: 'blog.html#guide-lead-generation' },
-    { label: 'Recruiting',  href: 'blog.html#guide-insurance-recruiting' },
-    { label: 'Licensing',   href: 'blog.html#rec-licensing-gap' },
-    { label: 'Activation',  href: 'blog.html#onboarding' },
-    { label: 'Production',  href: 'blog.html#guide-agent-production' },
-    { label: 'Persistency', href: 'blog.html#persistency' },
-    { label: 'Revenue',     href: 'blog.html#guide-distribution-leaks' },
+    { label: 'Attention',   href: 'guide-lead-generation.html' },
+    { label: 'Recruiting',  href: 'guide-insurance-recruiting.html' },
+    { label: 'Licensing',   href: 'guide-insurance-recruiting.html#rec-licensing-gap' },
+    { label: 'Activation',  href: 'onboarding.html' },
+    { label: 'Production',  href: 'guide-agent-production.html' },
+    { label: 'Persistency', href: 'persistency.html' },
+    { label: 'Revenue',     href: 'guide-distribution-leaks.html' },
   ];
   return (
     <section id="how" className="cb-section" style={{ background: 'var(--surface-page)', borderBottom: '1px solid var(--border-default)', scrollMarginTop: 80 }}>
@@ -59,7 +59,7 @@ function LeakCategories() {
         </div>
         <div className="cb-diag-grid">
           {cats.map((c) => (
-            <a key={c.label} href={`blog.html#${c.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <a key={c.label} href={`${c.slug}.html`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
               <Card variant="surface" padding="lg" style={{ height: '100%' }}>
                 <span style={{ marginBottom: 14, display: 'block' }}><Icon name={c.icon} size={22} /></span>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 500, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 8px' }}>{c.label}</h3>
@@ -96,7 +96,7 @@ function Diagnostics() {
         </div>
         <div className="cb-diag-grid">
           {items.map((it) => (
-            <a key={it.t} href={`blog.html#${it.slug}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+            <a key={it.t} href={`${it.slug}.html`} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
               <Card variant="surface" padding="lg" style={{ height: '100%' }}>
                 <span className="cb-diag-ico" style={{ marginBottom: 16 }}><Icon name={it.icon} size={22} /></span>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: 18, fontWeight: 500, letterSpacing: 'var(--tracking-tight)', color: 'var(--text-primary)', margin: '0 0 6px' }}>{it.t}</h3>
@@ -132,7 +132,7 @@ function LatestInsights() {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           {featured.map((p, i) => (
-            <a key={p.slug} href={`blog.html#${p.slug}`} style={{
+            <a key={p.slug} href={`${p.slug}.html`} style={{
               display: 'grid', gridTemplateColumns: '140px 1fr auto', gap: 28, alignItems: 'baseline',
               padding: '24px 0', borderTop: i === 0 ? '1px solid var(--border-default)' : 'none',
               borderBottom: '1px solid var(--border-default)', textDecoration: 'none', color: 'inherit',
