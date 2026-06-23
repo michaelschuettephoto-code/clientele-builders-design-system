@@ -244,12 +244,14 @@ const CHILD_POSTS = [
     ],
   },
   {
-    slug: 'sales-process', tag: 'Sales Process', date: 'May 2026',
+    slug: 'sales-process', tag: 'Sales Process', date: 'Jun 2026',
     t: 'Turning Attention Into Revenue, Reliably',
     body: [
-      "A strong sales process isn't about scripts — it's about consistency. The gap between your best producers and everyone else is usually a gap in process, not talent: what happens between 'interested' and 'closed' for your top agent versus your average one.",
-      "When that process lives only in individual habits, results vary wildly by agent and the organization has no way to diagnose why. When it's documented and observable, leaks become visible — too few follow-ups, too long between contact and proposal, too little structure in the close.",
-      "The goal isn't to make every agent identical. It's to make the handoffs reliable enough that you can see where revenue is actually being lost.",
+      "A 2024 study in Investment Management and Financial Innovations measured what actually moves someone from interested to committed: 78% of investors reported increased confidence in their decisions after working with advisors who prioritized transparency and demonstrated real expertise. 85% said they specifically preferred advisors who showed reliability and ethical conduct — and that preference is what builds the relationship that gets the deal done.",
+      "A separate 2024 study in the Journal of Management and Business Research found the same mechanism from a different angle: trust is a significant, direct predictor of whether someone actually follows the advice they're given. Not interest. Not how good the pitch sounded. Trust.",
+      "That reframes what a sales process is actually for. The gap between your best producers and everyone else usually isn't a script gap — it's that your best agent builds trust at every step (clear answers, visible expertise, follow-through) and your average agent is running a generic pitch and hoping the close handles itself.",
+      "When that process lives only in individual habits, results vary wildly by agent and the organization has no way to diagnose why. When it's documented and observable — what's said, what's shown, how follow-up happens — leaks become visible: too few follow-ups, too long between contact and proposal, too little transparency before the ask.",
+      "The goal isn't to make every agent identical. It's to make sure every agent is actually doing the thing the research says converts — being transparent, demonstrating expertise, following through — instead of assuming charisma will cover for a missing process.",
     ],
   },
   {
