@@ -233,12 +233,14 @@ const CHILD_POSTS = [
     ],
   },
   {
-    slug: 'marketing', tag: 'Marketing', date: 'May 2026',
+    slug: 'marketing', tag: 'Marketing', date: 'Jun 2026',
     t: 'Trust Is Built Before the First Conversation',
     body: [
-      "Consumer research on financial advice is consistent on one point: people decide whether they trust an advisor largely before they ever speak to one. What they see online — or don't see — shapes that decision.",
-      "For distribution organizations, this means marketing isn't a separate function from recruiting or sales. It's the layer that determines whether the people entering your funnel already trust you a little before the first call.",
-      "Attention online continues to shift, and AI-assisted search is changing how people research before making decisions. Organizations that haven't kept pace with where attention has moved are leaking interest they never get a chance to convert.",
+      "Financial advisors are the single most trusted source of financial advice in America — ahead of family, friends, and business news, in every age group except Gen Z. That's not an opinion; it's what a 2023 Harris Poll survey of 2,740 U.S. adults found for Northwestern Mutual's Planning & Progress Study. Only 3% of people said the same about social-media \"finfluencers.\"",
+      "Here's the gap that should bother every agency owner: despite that trust, only 37% of Americans actually work with a financial advisor. Most people believe an advisor would help them, and most people don't have one. That's not a product problem. That's a marketing problem — the trust exists, but it isn't reaching the people who'd act on it.",
+      "And trust gets decided earlier than most agencies think. A 2025 Mintel study of nearly 2,000 U.S. adults asked people why they trust their financial provider at all. The top reasons had nothing to do with a sales pitch: their money has stayed safe (51%), they've been with the provider a long time (49%), the provider has a reputation for being trustworthy (38%), past interactions were positive (36%), the business is well established (34%).",
+      "Every one of those is something a prospect can sense — or fail to sense — before they ever pick up the phone. A reputation. A track record. Evidence that other people trusted this agency and it worked out. None of it depends on what's said in the first call.",
+      "That's the actual job marketing does inside a distribution system. It isn't lead volume, and it isn't a clever ad. It's making sure the trust signals — reputation, tenure, proof, consistency — already exist by the time someone is ready to talk. An agency with a strong sales process and a thin reputation is fighting uphill before the conversation even starts.",
     ],
   },
   {
